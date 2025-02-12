@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "João Victor Paim",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -60.85,
+      "left": -236.45,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -30.8, "left": -38.4, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -42,
+      "left": -322.6,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 43.2,
+      "left": -326.95,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "servo1:PWM", "pico:GP22", "orange", [ "h-105.6", "v29" ] ],
+    [ "servo1:V+", "pico:3V3", "red", [ "h-105.6", "v-28.7" ] ],
+    [ "servo1:GND", "pico:GND.7", "black", [ "h-115.2", "v9.6" ] ],
+    [ "pico:GND.4", "led1:C", "black", [ "h0" ] ],
+    [ "led1:A", "r1:1", "blue", [ "v0" ] ],
+    [ "pico:GP12", "r1:2", "blue", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
